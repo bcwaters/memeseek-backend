@@ -58,11 +58,17 @@ Check out a few resources that may come in handy when working with NestJS:
 
 - LOG TODOS HERE
 
+- remove 404 EONENT eroor on undefined routes, i think it is related to implement a static directory
+
+- controller method handle research findall() vs getFile()
+
 - complete upload task
 
-- Set up port choice via .env configuration
+- Set up Configuration model for properties to select mockdb for testing
 
 - build table in POSTGRES database
+
+- implement a way to generate a doc file for each module via comments in code
 
 - build out routes that serve up database results
 

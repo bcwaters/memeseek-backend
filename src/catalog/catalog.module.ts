@@ -8,12 +8,7 @@ import {MockCatalog} from './mockDb/MockCatalog'
 
 // inject mockcatalog into service: {provide: 'MockCatalog', useValue: MockCatalog}
 @Module({
-  imports: [
-        PrismaModule,
-        ServeStaticModule.forRoot({
-          rootPath: join(__dirname, '..', 'public'),
-        }),
-      ],
+  imports: [ PrismaModule ],
   controllers: [CatalogController],
   providers: [ MockCatalog, CatalogService],
   exports: [CatalogService]

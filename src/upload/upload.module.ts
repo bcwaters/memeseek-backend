@@ -8,6 +8,7 @@ import { UploadController } from './upload.controller';
 import { UploadService } from './upload.service'
 
 //TODO make uploads an .env variable
+//create process for filename validation
 const uploadDir = join(process.cwd(), 'uploads');
 
 @Module({
@@ -20,7 +21,7 @@ const uploadDir = join(process.cwd(), 'uploads');
         filename: (req, file, cb) => {
           const ext = extname(file.originalname);
           const filename = `${Date.now()}${ext}`;
-          cb(null, filename);
+          cb(null, file.originalname);
         },
       }),
       fileFilter: (req, file, cb) => {

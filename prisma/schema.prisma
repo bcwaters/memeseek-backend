@@ -18,9 +18,20 @@ datasource db {
  // prisma/schema.prisma
  // ...
 
-model Template{
-    name        String      @id
-    location    String
-    id          String
+
+
+//Create ENUM for meme_ranking
+//increment ranking based on api hits
+//The idea is that all Template images have a corresponding json with metadata, including image retrieval location
+model TemplateMetadata{
+  id        String      @id @default(uuid()) @unique
+  name      String      @unique
+  location  String      @unique
+  creator   String
+  crypto    String
+  description   String  @default("no description:")
+  communityOrigin   String
+  memeRating Int @default(0)
+  ranking   Int
 
 }

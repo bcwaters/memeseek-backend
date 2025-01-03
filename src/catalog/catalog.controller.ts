@@ -3,7 +3,9 @@ import {HttpExceptionFilter} from '../common/filters/http-exception.filter'
 import { Request } from 'express';
 import {CatalogService} from './catalog.service';
 import { CreateTemplateDto } from './dto/create-template.dto';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
+//This service returns template metadata, which can be used to resolve an image
 //Path prefix via decarator, all routes have filter
 @UseFilters(new HttpExceptionFilter())
 @Controller('catalog')
@@ -11,6 +13,7 @@ export class CatalogController {
     constructor( private catalogService: CatalogService) {}
 
   //Creates a Get request handler  Due to decator this maps to GET /catalog
+  @ApiOperation({summary: 'Retrieve an array of Template.json'})
   @Get()
   async findAll() {
     try {

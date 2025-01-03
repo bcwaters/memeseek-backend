@@ -37,6 +37,6 @@ export class CatalogService {
 
   getCatalog(): Promise<Template[]> {
     //return this.mockCatalog.getCatalog();
-    return this.prisma.template.findMany();
+    return this.prisma.templateMetadata.findMany();
   }
 }

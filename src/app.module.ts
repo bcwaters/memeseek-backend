@@ -5,9 +5,10 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { CatalogModule } from './catalog/catalog.module'
 //import { PrismaModule } from './prisma/prisma.module';
 import { UploadModule } from './upload/upload.module';
+import { ImageRepoModule } from './image-repo/image-repo.module';
 
 @Module({
-  imports: [CatalogModule, UploadModule],
+  imports: [CatalogModule, UploadModule, ImageRepoModule],
   controllers: [AppController],
   providers: [AppService],
 })
