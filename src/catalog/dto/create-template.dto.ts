@@ -1,5 +1,5 @@
 export class CreateTemplateDto {
-  id: number;
+  id: string;
   name: string;
   location: string;
 }

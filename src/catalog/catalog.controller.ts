@@ -1,25 +1,29 @@
-import {HttpException, UseFilters, ForbiddenException, HttpStatus, Controller, Get, Req, Post, HttpCode, Param, Body, ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
+import {Inject, HttpException, UseFilters, ForbiddenException, HttpStatus, Controller, Get, Req, Post, HttpCode, Param, Body, ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
 import {HttpExceptionFilter} from '../common/filters/http-exception.filter'
 import { Request } from 'express';
 import {CatalogService} from './catalog.service';
 import { CreateTemplateDto } from './dto/create-template.dto';
-import { Template } from './interfaces/template.interface';
 
 //Path prefix via decarator, all routes have filter
 @UseFilters(new HttpExceptionFilter())
 @Controller('catalog')
 export class CatalogController {
-    constructor(private catalogService: CatalogService) {}
+    constructor( private catalogService: CatalogService) {}
 
   //Creates a Get request handler  Due to decator this maps to GET /catalog
   @Get()
   async findAll() {
     try {
-      await this.catalogService.findAll()
+      console.log("calling catalogService.findAll()")
+      console.log(this.catalogService)
+      return await this.catalogService.getCatalog()
+
     } catch (error) {
+        console.log("GET catalog controller error:")
+        console.log(error)
       throw new HttpException({
         status: HttpStatus.FORBIDDEN,
-        error: 'This is a custom message',
+        error: 'TODO this should be interal server error 500',
       }, HttpStatus.FORBIDDEN, {
         cause: error
       });
