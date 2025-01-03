@@ -8,7 +8,7 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 //This service returns template metadata, which can be used to resolve an image
 //Path prefix via decarator, all routes have filter
 @UseFilters(new HttpExceptionFilter())
-@Controller('catalog')
+@Controller('api/v1/catalog')
 export class CatalogController {
     constructor( private catalogService: CatalogService) {}
 
