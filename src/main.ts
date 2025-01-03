@@ -4,6 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 
+
 async function bootstrap() {
 
   // Specify Express to expose express platform
@@ -23,6 +24,7 @@ async function bootstrap() {
   // Setup Swagger module with the application instance and the Swagger document
   SwaggerModule.setup('api', app, document);
 
+  //TODO make this an environment variable since it is declared here and in the catalog controller
   const uploadDir = join(process.cwd(), 'uploads');
   if (!existsSync(uploadDir)) {
     mkdirSync(uploadDir);

@@ -58,9 +58,18 @@ Check out a few resources that may come in handy when working with NestJS:
 
 - LOG TODOS HERE
 
+- complete upload task
+
+- Set up port choice via .env configuration
+
+- build table in POSTGRES database
+
+- build out routes that serve up database results
+
+- determine design pattern for image serving... static files on nest and next firsts
+
 - DevOps setup terraform script for EC2 and database in amazon
 
-- DevOps Docker Image for ec2 instance which include git and required packages to run this project
-
+- DevOps Docker Image for ec2 instance which include git and required packages to run this project\ sudo apt update, sudo apt install node, sudo apt install npm
 ## License
 

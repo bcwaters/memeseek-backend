@@ -10,9 +10,10 @@ export class CatalogService {
     //Injected catalog data
     private readonly catalog: Template[];
     private mockCatalog: MockCatalog;
+    private prisma: PrismaService;
 
 //TODO Prefer to annotate instead of direct instantiation, need class interface?
-    constructor(mockCatalog: MockCatalog, private readonly prisma: PrismaService){
+    constructor(mockCatalog: MockCatalog, private readonly prisma2: PrismaService){
         console.log("Catalog Service Instantiated, mockCatalog:");
 
         //print class prototype
@@ -23,6 +24,9 @@ export class CatalogService {
         //console.log(this.mockCatalog === mockCatalog)
         //this.mockCatalog = new MockCatalog();
         console.log('mockCatalogService loaded: ' + (this.mockCatalog === mockCatalog))
+
+        //console.log(prisma2)
+        this.prisma = prisma2;
         }
 
 
@@ -31,7 +35,8 @@ export class CatalogService {
     this.catalog.push(template);
   }
 
-  getCatalog(): Template[] {
-    return this.mockCatalog.getCatalog();
+  getCatalog(): Promise<Template[]> {
+    //return this.mockCatalog.getCatalog();
+    return this.prisma.template.findMany();
   }
 }

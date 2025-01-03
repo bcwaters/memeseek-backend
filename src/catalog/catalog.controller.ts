@@ -15,7 +15,7 @@ export class CatalogController {
   async findAll() {
     try {
       console.log("calling catalogService.findAll()")
-      console.log(this.catalogService)
+      //console.log(this.catalogService)
       return await this.catalogService.getCatalog()
 
     } catch (error) {
