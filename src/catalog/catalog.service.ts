@@ -35,8 +35,30 @@ export class CatalogService {
     this.catalog.push(template);
   }
 
+ async getCatalogSchema() {
+      let tableName = 'TemplateMetadata';
+      type columnType={column_name: string; data_type: string}
+    //@ts-ignore
+    const tableSchema: Array<columnType> = await this.prisma.$queryRaw`
+    SELECT column_name, data_type from information_schema.columns
+    where table_name = ${tableName};
+  `
+
+  //@ts-ignore
+  return tableSchema.reduce(
+      (columns, currentField) =>  {columns[currentField.column_name] = currentField.data_type;
+        return columns;},
+        {}
+        );
+      }
+
+
   getCatalog(): Promise<Template[]> {
     //return this.mockCatalog.getCatalog();
     return this.prisma.templateMetadata.findMany();
   }
 }
+
+
+
+//SELECT column_name, data_type FROM information_schema. columns WHERE table_name = 'TemplateMetadata';

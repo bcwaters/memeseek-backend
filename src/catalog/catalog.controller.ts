@@ -44,10 +44,10 @@ export class CatalogController {
    }
 
 
-@Get(':id')
-findOne(@Param() params: any): string {
-  console.log(params.id);
-  return `This action returns a #${params.id} cat`;
+@Get('schema')
+async findOne() {
+  console.log('calling prisma');
+  return await this.catalogService.getCatalogSchema();
 }
 
 }
