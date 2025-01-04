@@ -5,7 +5,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname, join } from 'path';
 import { UploadController } from './upload.controller';
-import { UploadService } from './upload.service'
+import { UploadService } from './upload.service';
 
 //TODO make uploads an .env variable
 //create process for filename validation
@@ -36,4 +36,4 @@ const uploadDir = join(process.cwd(), 'uploads');
   controllers: [UploadController],
   providers: [UploadService],
 })
-export class UploadModule { }
+export class UploadModule {}

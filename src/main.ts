@@ -5,9 +5,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 
-
 async function bootstrap() {
-
   // Specify Express to expose express platform
   //const app = await NestFactory.create<NestExpressApplication>(AppModule)
   const app = await NestFactory.create(AppModule);
@@ -31,9 +29,8 @@ async function bootstrap() {
     mkdirSync(uploadDir);
   }
 
-
   const port = process.env.APP_PORT || 3000;
-  console.log("App Port:" + port)
+  console.log('App Port:' + port);
   await app.listen(port);
 }
 bootstrap();
